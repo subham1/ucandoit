@@ -1,0 +1,100 @@
+// Program to print BFS traversal from a given source vertex. BFS(int s)
+// traverses vertices reachable from s.
+#include<iostream>
+#include <list>
+#include<climits>
+
+using namespace std;
+
+void swap(int *x, int *y);
+
+class minHeap{
+
+  int *harr;
+  int heapSize;
+
+  public:
+      minHeap(int a[],int size);
+      void minHeapify(int i);
+      int parent(int i){
+          return (i-1)/2;
+      }
+
+      int left(int i){
+          return 2*i+1;
+      }
+
+      int right(int i){
+          return 2*i+2;
+      }
+
+      int extractMin();
+      int getMin(){
+          return harr[0];
+      }
+
+
+
+};
+
+minHeap::minHeap(int a[],int size){
+    harr=a;
+    heapSize=size;
+    int i= heapSize;
+    while(i>=0){
+        minHeapify(i);
+        i--;
+    }
+
+}
+
+int minHeap::extractMin(){
+    int root=harr[0];
+
+    if(heapSize>1){
+        harr[0]=harr[heapSize-1];
+        minHeapify(0);
+    }
+    return root;
+
+}
+
+void minHeap::minHeapify(int i){
+    int smallest= i;
+    if( left(smallest)<heapSize && harr[left(smallest)]>harr[smallest]){
+        smallest= left(i);
+    }
+    if(right(smallest)<heapSize && harr[right(smallest)]>harr[smallest]){
+        smallest= right(i);
+    }
+
+}
+
+void swap(int *x, int *y){
+    int temp =*x;
+    *x= *y;
+    *y =temp;
+}
+
+int kthSmallest(int arr[], int n, int k){
+    minHeap mh(arr,n);
+
+    for(int i=0;i<k-1;i++){
+        mh.extractMin();
+    }
+    return mh.getMin();
+}
+
+int main(){
+    int n,k;
+    cin>>n;
+    int i;
+    int a[n];
+    for(i=0;i<n;i++){
+        cin>>a[i];
+    }
+    cin>>k;
+        cout << "K'th smallest element is " << kthSmallest(a, n, k);
+
+    return 0; 
+}
