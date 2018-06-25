@@ -1,0 +1,49 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+void swap(int *a, int *b){
+    int temp;
+    temp=*a;
+    *a=*b;
+    *b= temp;
+}
+int partition(vector<int>& arr, int start, int end){
+	int key =arr[end];
+	int j =start-1;
+	int i;
+	for(i=start;i<end;i++){
+	    if(arr[i]<key){
+	        j+=1;
+	        swap(arr[j],arr[i]);
+	    }
+	}
+	j+=1;
+	swap(arr[j],arr[i]);
+	return j;
+}
+
+void sort(vector<int>& arr, int s, int e){
+	if (s>=e) return;
+	int pi = partition(arr, s, e);
+	sort(arr, s, pi -1);
+	sort(arr, pi+1, e );
+}
+
+void print(vector<int>& arr){
+	for (int i = 0; i< arr.size(); ++i)
+		cout << arr[i] << " ";
+	cout << endl;
+}
+
+int main () {
+	vector<int> arr;
+	arr.push_back(4);
+	arr.push_back(3);
+	arr.push_back(2);
+	arr.push_back(5);
+	arr.push_back(-1);
+	sort(arr, 0, arr.size()-1);
+	print(arr);
+}
