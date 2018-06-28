@@ -1,0 +1,24 @@
+#include <cmath>
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+
+int minDistance(int arr[],int n){
+	/* Don't write main().
+     * Don't read input, it is passed as function argument.
+     * Return output and don't print it.
+     * Taking input and printing output is handled automatically.
+     */
+    unordered_map<int,int> map;
+    int index;
+    int length;
+    for(int i=0;i<n;i++){
+      if(map.find(arr[i])!=map.end()){
+        index=(map.find(arr[i]))->second;
+        length=min(length,abs(index-i));
+      }
+        map[arr[i]]=i;      
+    }
+    return length;
+  
+}
