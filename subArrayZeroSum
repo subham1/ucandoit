@@ -1,0 +1,22 @@
+#include<unordered_set>
+bool subArrayZeroSum(int input[], int n) {
+		
+	/* Don't write main().
+     	* the input array is already passed as function argument.
+     	* Taking input and printing output is handled automatically. Return only true or false.
+     	*/
+        int sum=0;
+        unordered_set<int> s;
+        for(int i=0;i<n;i++){
+          sum=sum+input[i];        //find the sum from 0 to i-th index
+          if(s.find(sum)!=s.end()){    // if you have seen this sum before, it means that there is a subarray in between who summed up to 0
+            return true;
+          }
+          if(sum==0){           
+            return true;
+          }
+          s.insert(sum); 
+        }
+        return false;
+}
+
