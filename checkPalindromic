@@ -1,0 +1,22 @@
+
+#include<string.h>
+bool checkPalindromic(char input[], int start, int end){
+  if(start>=end){
+    return true;
+  }
+  if(input[start]!=input[end]){
+    return false;
+  }
+  return checkPalindromic(input, start+1,end-1);
+}
+bool checkPalindrome(char input[]) {
+    // Write your code here
+   int n=strlen(input);
+   if(strlen(input)==1){
+     return true;
+   }
+  return checkPalindromic(input,0,n-1);
+
+}
+
+
