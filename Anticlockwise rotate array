@@ -1,0 +1,20 @@
+//used no extra space
+void rotate(int **input, int n){
+    /* Don't write main().
+     * Don't read input, it is passed as function argument.
+     * Taking input and printing output is handled automatically.
+     */
+  int temp1,temp2,temp3;
+  for(int i=0;i<n/2;i++){
+    int size =n-2*i;
+    for(int j=0;j<size-1;j++){
+      temp1=input[n-i-1][i+j];
+      input[n-i-1][i+j]=input[i+j][i];
+      temp2=input[n-i-1-j][n-i-1];
+      input[n-i-1-j][n-i-1]=temp1;
+      temp3=input[i][n-i-1-j];
+      input[i][n-i-1-j]=temp2;
+      input[i+j][i]=temp3;
+    }
+  }
+}
