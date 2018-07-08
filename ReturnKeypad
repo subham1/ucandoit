@@ -1,0 +1,130 @@
+#include <string>
+using namespace std;
+
+int keypad(int num, string output[]){
+    /* Insert all the possible combinations of the integer number into the output string array. You do not need to
+    print anything, just return the number of strings inserted into the array.
+    */
+
+   if(num==0){
+     output[0]="";
+     return 1;
+   }
+  
+  int lastDigit =num%10;
+  int smallKeypad=keypad(num/10,output);
+  if(lastDigit==0|| lastDigit==1){
+     output[0]="";
+     return 1;
+  }
+  if(lastDigit==2){
+    for(int i=0;i<smallKeypad;i++){
+      output[i+smallKeypad]=output[i] +'b';
+    }
+    for(int i=0;i<smallKeypad;i++){
+      output[i+2*smallKeypad]=output[i]+'c';
+    }
+    for(int i=0;i<smallKeypad;i++){
+      output[i]=output[i] +'a';
+    }
+    return 3*smallKeypad;
+  }
+  
+  if(lastDigit==3){
+    for(int i=0;i<smallKeypad;i++){
+      output[i+smallKeypad]=output[i] +'e';
+    }
+    for(int i=0;i<smallKeypad;i++){
+      output[i+2*smallKeypad]=output[i]+'f';
+    }
+    for(int i=0;i<smallKeypad;i++){
+      output[i]=output[i] +'d';
+    }
+    return 3*smallKeypad;
+  }
+  
+    if(lastDigit==4){
+    for(int i=0;i<smallKeypad;i++){
+      output[i+smallKeypad]=output[i] +'h';
+    }
+    for(int i=0;i<smallKeypad;i++){
+      output[i+2*smallKeypad]=output[i]+'i';
+    }
+    for(int i=0;i<smallKeypad;i++){
+      output[i]=output[i] +'g';
+    }
+    return 3*smallKeypad;
+  }
+  
+    if(lastDigit==5){
+    for(int i=0;i<smallKeypad;i++){
+      output[i+smallKeypad]=output[i] +'k';
+    }
+    for(int i=0;i<smallKeypad;i++){
+      output[i+2*smallKeypad]=output[i]+'l';
+    }
+    for(int i=0;i<smallKeypad;i++){
+      output[i]=output[i] +'j';
+    }
+    return 3*smallKeypad;
+  }
+  
+    if(lastDigit==6){
+    for(int i=0;i<smallKeypad;i++){
+      output[i+smallKeypad]=output[i] +'n';
+    }
+    for(int i=0;i<smallKeypad;i++){
+      output[i+2*smallKeypad]=output[i]+'o';
+    }
+    for(int i=0;i<smallKeypad;i++){
+      output[i]=output[i] +'m';
+    }
+    return 3*smallKeypad;
+  }
+  
+  if(lastDigit==7){
+    for(int i=0;i<smallKeypad;i++){
+      output[i+smallKeypad]=output[i] +'q';
+    }
+    for(int i=0;i<smallKeypad;i++){
+      output[i+2*smallKeypad]=output[i]+'r';
+    }
+    for(int i=0;i<smallKeypad;i++){
+      output[i+3*smallKeypad]=output[i]+'s';
+    }
+    for(int i=0;i<smallKeypad;i++){
+      output[i]=output[i] +'p';
+    }
+    return 4*smallKeypad;
+  }
+  
+  if(lastDigit==8){
+    for(int i=0;i<smallKeypad;i++){
+      output[i+smallKeypad]=output[i] +'u';
+    }
+    for(int i=0;i<smallKeypad;i++){
+      output[i+2*smallKeypad]=output[i]+'v';
+    }
+    for(int i=0;i<smallKeypad;i++){
+      output[i]=output[i] +'t';
+    }
+    return 3*smallKeypad;
+  }
+  
+    if(lastDigit==9){
+    for(int i=0;i<smallKeypad;i++){
+      output[i+smallKeypad]=output[i] +'x';
+    }
+    for(int i=0;i<smallKeypad;i++){
+      output[i+2*smallKeypad]=output[i]+'y';
+    }
+    for(int i=0;i<smallKeypad;i++){
+      output[i+3*smallKeypad]=output[i]+'z';
+    }
+    for(int i=0;i<smallKeypad;i++){
+      output[i]=output[i] +'w';
+    }
+    return 4*smallKeypad;
+  }
+
+}
