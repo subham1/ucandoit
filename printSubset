@@ -1,0 +1,29 @@
+//Given an array A and an integer K, print all subsets of A which sum to K.
+
+THE PROBLEM IS IN RECURSION AND BACK TRACKING.
+
+NOTE THAT THE IDEA IN PRINT PROBLEMS IS TO TAKE THE DECISION AT THAT TIME POINT. so we are taking A DECISION HERE, WHERE THE DECISION BEING WHETHER TO INCLUDE THE FIRST CHARACTER OR NOT.
+
+void printSubset(int input[], int size, int k, int output[], int m){
+   if(size==0){
+     if(k==0){
+       for(int i=0;i<m;i++){
+         cout<<output[i]<<" ";
+       }
+       cout<<endl;
+     }
+    return;
+  }
+  int *newOutput =new int[m+1];
+  for(int i=0;i<m;i++){
+    newOutput[i]=output[i];
+  }
+  newOutput[m] =input[0];
+  printSubset(input+1,size-1,k-input[0],newOutput,m+1);   //WE INCLUDE THE FIRST INTEGER. SO WE ADD THAT IN THE OUTPUT ARRAY.
+  printSubset(input+1,size-1,k,output,m); // WE DONOT INCLUDE THE FIRST ELEMENT.
+  delete [] newOutput;
+}
+void printSubsetSumToK(int input[], int size, int k) {
+  int* output =new int[size];
+  return printSubset(input,size,k,output,0);
+}
